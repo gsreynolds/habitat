@@ -34,7 +34,6 @@ steps:
 
   - label: ":mac: :habicat: core/hab"
     command: uname -a
-    skip: "Builds aren't quite working on the Mac builders yet"
     concurrency_group: "habitat/release/macos"
     concurrency: 1
     agents:
