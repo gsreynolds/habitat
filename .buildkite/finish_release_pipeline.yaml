@@ -43,11 +43,6 @@ steps:
     agents:
       queue: habitat-release
 
-  - label: ":habicat: :boom: Destroy Release Channel"
-    command: .buildkite/scripts/destroy_release_channel.sh
-    agents:
-      queue: habitat-release
-
   - label: ":github: Publish Github Release"
     command: /bin/true
     skip: Not implemented yet
