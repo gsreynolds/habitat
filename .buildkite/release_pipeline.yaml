@@ -120,12 +120,6 @@ steps:
     agents:
       queue: habitat-release
 
-  - label: ":cloudfoundry: core/hab-pkg-cfize"
-    command: .buildkite/scripts/build_component.sh pkg-cfize
-    # skip: "Working on something else now"
-    agents:
-      queue: habitat-release
-
   - label: ":linux: :docker: core/hab-pkg-export-docker"
     command: .buildkite/scripts/build_component.sh pkg-export-docker
     # skip: "Working on something else now"
@@ -165,6 +159,16 @@ steps:
   # TODO: Create a Mesos emoji
   - label: ":habicat: core/hab-pkg-mesosize"
     command: .buildkite/scripts/build_component.sh pkg-mesosize
+    # skip: "Working on something else now"
+    agents:
+      queue: habitat-release
+
+  - wait
+
+  # The cfize export currently has a dependency on
+  # hab-pkg-export-docker, so it must be built after that.
+  - label: ":cloudfoundry: core/hab-pkg-cfize"
+    command: .buildkite/scripts/build_component.sh pkg-cfize
     # skip: "Working on something else now"
     agents:
       queue: habitat-release
