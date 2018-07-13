@@ -33,7 +33,7 @@ steps:
       queue: habitat-release
 
   - label: ":mac: :habicat: core/hab"
-    command: uname -a
+    command: .buildkite/scripts/build_mac_release.sh
     # skip: "Builds aren't quite working on the Mac builders yet"
     concurrency_group: "habitat/release/macos"
     concurrency: 1
