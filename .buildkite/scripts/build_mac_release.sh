@@ -60,8 +60,13 @@ import_keys
 sudo mkdir -p /hab/cache/keys
 sudo cp ~/.hab/cache/keys/* /hab/cache/keys
 
+echo "--- WHOAMI"
+whoami
+
 echo "--- :hammer_and_wrench: Building 'hab'"
 cd ./components/hab/mac/
+
+
 sudo DEBUG=1 ./mac-build.sh
 # sudo ./components/hab/mac/mac-build.sh components/hab/mac
 echo "Built new version of hab"
