@@ -32,7 +32,7 @@ class HabLibiconv < Formula
 
   def install
     ENV.universal_binary if build.universal?
-    ENV.j1
+    ENV.deparallelize
 
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
@@ -51,7 +51,7 @@ index d7cda21..4cabcac 100644
 --- a/lib/flags.h
 +++ b/lib/flags.h
 @@ -14,6 +14,7 @@
- 
+
  #define ei_ascii_oflags (0)
  #define ei_utf8_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
 +#define ei_utf8mac_oflags (HAVE_ACCENTS | HAVE_QUOTATION_MARKS | HAVE_HANGUL_JAMO)
