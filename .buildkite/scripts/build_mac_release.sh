@@ -9,6 +9,8 @@
 
 set -euo pipefail
 
+source .buildkite/scripts/shared.sh
+
 # TODO (CM): We don't need this, since we can set environment
 # variables in Buildkite automatically
 
@@ -43,6 +45,23 @@ brew tap habitat-sh/habitat
 brew upgrade hab || brew install hab
 hab --version
 
+# Declaring this variable for the import_keys function only; see its
+# documentation for further background.
+#
+# Alternatively, consider implementing set_hab_binary with platform-awareness
+declare -g hab_binary="$(which hab)"
+import_keys
+
+echo "--- :hammer_and_wrench: Building 'hab'"
+./components/hab/mac/mac-build components/hab/mac
+echo "Built new version of hab"
+
+
+
+
+
+
+
 # bootstrap_dir="$HOME/mac_unstable/$TRAVIS_BUILD_NUMBER"
 # mac_dir="${hab_src_dir}/components/hab/mac"
 # mac_hab="${bootstrap_dir}/hab"
@@ -71,27 +90,9 @@ hab --version
 
 
 
-# # TODO (CM): factor out `import_keys` function from build_component to
-# # use here
-
-
-# # # create our origin key
-# # cat << EOF > core.sig.key
-# # SIG-SEC-1
-# # core-20160810182414
-
-# # ${HAB_ORIGIN_KEY}
-# # EOF
-
-# # echo "--> Clearing any pre-exisiting origin secret keys from cache"
-# # rm -f /hab/cache/keys/*-*.sig.key
-# # echo "--> Importing origin secret key into cache"
-# # ${mac_hab} origin key import < ./core.sig.key
-# # rm -f ./core.sig.key
-
-# # since this is running on a headless mac, we can't use docker/studio,
-# # so we need to resort to this hackery
-# echo "Customizing bintray-publish"
+# since this is running on a headless mac, we can't use docker/studio,
+# so we need to resort to this hackery
+# echo "--- Customizing bintray-publish"
 # cp -v "$hab_src_dir"/components/bintray-publish/bin/publish-hab.sh "$bootstrap_dir"
 # program=$bootstrap_dir/publish-hab.sh
 # pkg_maintainer="The Habitat Maintainers <humans@habitat.sh>"

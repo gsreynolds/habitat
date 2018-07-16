@@ -2,17 +2,19 @@
 
 set -euo pipefail
 
-# TODO (CM): Extract this function to somewhere else?
-import_keys() {
-    echo "--- :key: Downloading 'core' public keys from Builder"
-    ${hab_binary} origin key download core
-    echo "--- :closed_lock_with_key: Downloading latest 'core' secret key from Builder"
-    ${hab_binary} origin key download \
-        --auth="${HAB_TEAM_AUTH_TOKEN}" \
-        --secret \
-        core
-    # TODO (CM): delete the secret key later?
-}
+source .buildkite/scripts/shared.sh
+
+# # TODO (CM): Extract this function to somewhere else?
+# import_keys() {
+#     echo "--- :key: Downloading 'core' public keys from Builder"
+#     ${hab_binary} origin key download core
+#     echo "--- :closed_lock_with_key: Downloading latest 'core' secret key from Builder"
+#     ${hab_binary} origin key download \
+#         --auth="${HAB_TEAM_AUTH_TOKEN}" \
+#         --secret \
+#         core
+#     # TODO (CM): delete the secret key later?
+# }
 
 # Until we have built both a new core/hab _and_ a new core/hab-studio package, we
 # should continue to use the `hab` binary provided on our Buildkite
