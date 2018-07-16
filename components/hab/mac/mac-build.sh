@@ -85,7 +85,9 @@ install_if_missing coreutils
 install_if_missing gnu-tar
 install_if_missing wget
 install_if_missing bash
-install_if_missing hab-rq "$(dirname "$0")"/homebrew/hab-rq.rb
+
+install_if_missing rq
+#install_if_missing hab-rq "$(dirname "$0")"/homebrew/hab-rq.rb
 
 # Homebrew packages required to build `hab`
 install_if_missing zlib #homebrew/dupes/zlib
@@ -94,8 +96,8 @@ install_if_missing bzip2 #homebrew/dupes/bzip2
 install_if_missing expat
 install_if_missing openssl
 install_if_missing libsodium
-install_if_missing hab-libiconv "$(dirname "$0")"/homebrew/hab-libiconv.rb
-install_if_missing hab-libarchive "$(dirname "$0")"/homebrew/hab-libarchive.rb
+install_if_missing libiconv #hab-libiconv "$(dirname "$0")"/homebrew/hab-libiconv.rb
+install_if_missing libarchive #hab-libarchive "$(dirname "$0")"/homebrew/hab-libarchive.rb
 
 if ! command -v rustc >/dev/null; then
   info "Rust missing, attempting to install"
