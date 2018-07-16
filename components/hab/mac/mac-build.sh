@@ -86,8 +86,8 @@ install_if_missing gnu-tar
 install_if_missing wget
 install_if_missing bash
 
-install_if_missing rq
-#install_if_missing hab-rq "$(dirname "$0")"/homebrew/hab-rq.rb
+# TODO (CM): Install via `brew cask install rq` instead
+install_if_missing hab-rq "$(dirname "$0")"/homebrew/hab-rq.rb
 
 # Homebrew packages required to build `hab`
 install_if_missing zlib #homebrew/dupes/zlib
