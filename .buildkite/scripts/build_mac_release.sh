@@ -56,6 +56,10 @@ bash --version
 hab_binary="$(which hab)"
 import_keys
 
+# mac-build.sh is currently expecting things to be in /hab/cache/keys
+sudo mkdir -p /hab/cache/keys
+cp ~/.hab/cache/keys/* /hab/cache/keys
+
 echo "--- :hammer_and_wrench: Building 'hab'"
 sudo ./components/hab/mac/mac-build.sh components/hab/mac
 echo "Built new version of hab"
