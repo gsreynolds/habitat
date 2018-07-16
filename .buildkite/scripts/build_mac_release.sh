@@ -57,7 +57,7 @@ hab_binary="$(which hab)"
 import_keys
 
 echo "--- :hammer_and_wrench: Building 'hab'"
-./components/hab/mac/mac-build.sh components/hab/mac
+sudo ./components/hab/mac/mac-build.sh components/hab/mac
 echo "Built new version of hab"
 
 
