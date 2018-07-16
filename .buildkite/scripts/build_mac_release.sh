@@ -64,6 +64,8 @@ echo "--- WHOAMI"
 whoami
 
 echo "--- Cleanup Homebrew after previous installs"
+# TODO (CM): these are currently installed by mac-build.sh
+
 deps=(coreutils
       gnu-tar
       wget
@@ -84,10 +86,18 @@ for dep in "${deps[@]}"; do
     brew uninstall "$dep" || true
 done
 
+echo "--- :rust: RUSTUP!"
+# Somehow the mac-build.sh rust installation isn't really working;
+# might be sourcing
+rustc --version || true
+which rustc || true
+rustup --version || true
+which rustup || true
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+source $HOME/.cargo/env
 
 echo "--- :hammer_and_wrench: Building 'hab'"
 cd ./components/hab/mac/
-
 
 sudo DEBUG=1 ./mac-build.sh
 # sudo ./components/hab/mac/mac-build.sh components/hab/mac
