@@ -49,7 +49,11 @@ hab --version
 # documentation for further background.
 #
 # Alternatively, consider implementing set_hab_binary with platform-awareness
-declare -g hab_binary="$(which hab)"
+
+# declare -g isn't in the bash on our mac builders
+bash --version
+
+hab_binary="$(which hab)"
 import_keys
 
 echo "--- :hammer_and_wrench: Building 'hab'"
