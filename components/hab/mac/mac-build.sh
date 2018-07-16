@@ -88,9 +88,9 @@ install_if_missing bash
 install_if_missing hab-rq "$(dirname "$0")"/homebrew/hab-rq.rb
 
 # Homebrew packages required to build `hab`
-install_if_missing zlib homebrew/dupes/zlib
+install_if_missing zlib #homebrew/dupes/zlib
 install_if_missing xz
-install_if_missing bzip2 homebrew/dupes/bzip2
+install_if_missing bzip2 #homebrew/dupes/bzip2
 install_if_missing expat
 install_if_missing openssl
 install_if_missing libsodium
