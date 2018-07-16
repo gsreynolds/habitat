@@ -63,6 +63,28 @@ sudo cp ~/.hab/cache/keys/* /hab/cache/keys
 echo "--- WHOAMI"
 whoami
 
+echo "--- Cleanup Homebrew after previous installs"
+deps=(coreutils
+      gnu-tar
+      wget
+      bash
+      rq
+      zlib
+      xz
+      bzip2
+      expat
+      libsodium
+      libiconv
+      libarchive
+      # openssl # installed by hab already
+      hab-rq
+      hab-libiconv
+      hab-libarchive)
+for dep in "${deps[@]}"; do
+    brew uninstall "$dep" || true
+done
+
+
 echo "--- :hammer_and_wrench: Building 'hab'"
 cd ./components/hab/mac/
 
