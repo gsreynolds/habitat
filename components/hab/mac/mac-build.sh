@@ -30,7 +30,7 @@ install_if_missing() {
     local formula="$pkg"
   fi
 
-  sudo -u "${SUDO_USER}" brew list --versions "${pkg}"
+  # sudo -u "${SUDO_USER}" brew list --versions "${pkg}"
 
   if [[ $(sudo -u "${SUDO_USER}" brew list --versions "$pkg" | wc -l) -eq 0 ]]; then
     info "Installing missing Homebrew package $formula"
