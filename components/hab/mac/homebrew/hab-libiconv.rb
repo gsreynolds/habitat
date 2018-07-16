@@ -14,7 +14,7 @@ class HabLibiconv < Formula
     sha256 "456a816a94427c963fa3cb90257830aa33268f22443cf5a8a4cf1be3e3ed3bb9" => :mavericks
   end
 
-  keg_only :provided_by_osx
+  keg_only :provided_by_macos
 
   option :universal
 

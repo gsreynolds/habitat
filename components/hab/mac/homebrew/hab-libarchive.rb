@@ -8,7 +8,7 @@ class HabLibarchive < Formula
   mirror "https://github.com/libarchive/libarchive/archive/v3.2.0.tar.gz"
   sha256 "7bce45fd71ff01dc20d19edd78322d4965583d81b8bed8e26cacb65d6f5baa87"
 
-  keg_only :provided_by_osx
+  keg_only :provided_by_macos
 
   depends_on "xz" => :recommended
   depends_on "lz4" => :optional
