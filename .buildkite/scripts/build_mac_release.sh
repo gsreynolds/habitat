@@ -89,10 +89,7 @@ done
 echo "--- :rust: RUSTUP!"
 # Somehow the mac-build.sh rust installation isn't really working;
 # might be sourcing
-rustc --version || true
-which rustc || true
-rustup --version || true
-which rustup || true
+sudo /usr/local/lib/rustlib/uninstall.sh || true
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 source $HOME/.cargo/env
 
