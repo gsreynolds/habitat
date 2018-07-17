@@ -89,15 +89,13 @@ done
 echo "--- :rust: RUSTUP!"
 
 # Ensure cache is clear of previous build artifacts for MAXIMUM PARANOIA
-sudo rm -Rf /Users/build/.cargo
+sudo rm -Rf /Users/build/.cargo/{git,registry}
 
 # Somehow the mac-build.sh rust installation isn't really working;
 # might be sourcing
 sudo /usr/local/lib/rustlib/uninstall.sh || true
 curl https://sh.rustup.rs -sSf | sudo sh -s -- -y
 #source $HOME/.cargo/env
-
-rm -Rf /Users/build/.cargo
 
 echo "--- :hammer_and_wrench: Building 'hab'"
 cd ./components/hab/mac/
