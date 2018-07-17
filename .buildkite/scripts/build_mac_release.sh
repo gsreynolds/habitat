@@ -90,8 +90,8 @@ echo "--- :rust: RUSTUP!"
 # Somehow the mac-build.sh rust installation isn't really working;
 # might be sourcing
 sudo /usr/local/lib/rustlib/uninstall.sh || true
-curl https://sh.rustup.rs -sSf | sh -s -- -y
-source $HOME/.cargo/env
+curl https://sh.rustup.rs -sSf | sudo sh -s -- -y
+#source $HOME/.cargo/env
 
 echo "--- :hammer_and_wrench: Building 'hab'"
 cd ./components/hab/mac/
