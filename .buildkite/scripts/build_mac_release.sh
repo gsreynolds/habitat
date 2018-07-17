@@ -86,6 +86,9 @@ for dep in "${deps[@]}"; do
     brew uninstall "$dep" || true
 done
 
+echo "--- Cleanup cache"
+sudo rm -Rf /hab/cache/src
+
 echo "--- :rust: RUSTUP!"
 
 # Ensure cache is clear of previous build artifacts for MAXIMUM PARANOIA
