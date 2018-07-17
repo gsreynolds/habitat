@@ -89,7 +89,7 @@ done
 echo "--- :rust: RUSTUP!"
 
 # Ensure cache is clear of previous build artifacts for MAXIMUM PARANOIA
-rm -Rf /Users/build/.cargo
+sudo rm -Rf /Users/build/.cargo
 
 # Somehow the mac-build.sh rust installation isn't really working;
 # might be sourcing
